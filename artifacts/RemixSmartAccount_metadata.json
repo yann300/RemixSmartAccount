@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.30+commit.73712a01"
+		"version": "0.8.31+commit.fd3a2265"
 	},
 	"language": "Solidity",
 	"output": {
@@ -483,13 +483,13 @@
 		"compilationTarget": {
 			"contracts/RemixSmartAccount.sol": "RemixSmartAccount"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "osaka",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
@@ -576,11 +576,11 @@
 			]
 		},
 		"contracts/RemixSmartAccount.sol": {
-			"keccak256": "0xe192240cf260ef3477dba4bc571ba8fa1e4d8ca1aeb85795678bca06be4a96a7",
+			"keccak256": "0x634c6751c71ad8f130e86df8ac5430d5e93d424fc1d8bcd8aec69134c4a77165",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b700deec08d1889916aee588becebd98f6410f6a729f09040a884776674e4e55",
-				"dweb:/ipfs/QmTYeY55mcTPDm8KPDrauS4vTVmznv5s5uFqT792yZE7rK"
+				"bzz-raw://6d7b84873ba13b20067d00d1567e8c6c0b63829c64e6c90165b3c42feb1520a6",
+				"dweb:/ipfs/QmRbRUo1A4hM2cNwLJStJ2n8Zw1EM17iZEn7s1TkdacSo9"
 			]
 		},
 		"contracts/core/BaseAccount.sol": {
@@ -669,14 +669,6 @@
 			"urls": [
 				"bzz-raw://96cc246fe944a212cbb9ba82065b2d380ec80954fcdb5d8d982b476bd5b72868",
 				"dweb:/ipfs/QmZ25eFixEhukbfWGz5TBjsp7YohxUqD5i2rxhaghfvHt8"
-			]
-		},
-		"hardhat/console.sol": {
-			"keccak256": "0x7434453e6d3b7d0e5d0eb7846ffdbc27f0ccf3b163591263739b628074dc103a",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://49355f780520494d1d5a0f01858385e51bb5280ce0ecfb960f16995065dca395",
-				"dweb:/ipfs/QmSwJ6C5QLz6xKeQZS8wbwjU1KxRFTYfwbGmtzisd5sRW4"
 			]
 		}
 	},

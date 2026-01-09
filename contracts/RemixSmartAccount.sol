@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "./core/Helpers.sol";
 import "./core/BaseAccount.sol";
 
-import "hardhat/console.sol";
+// import "hardhat/console.sol";
 
 /**
  * RemixSmartAccount.sol
@@ -72,8 +72,8 @@ contract RemixSmartAccount is BaseAccount, IERC165, IERC1271, ERC1155Holder, ERC
     // Function to check and enforce USDC balance limit
     function _checkTokenBalance(address token, uint id, uint value) internal view {
         uint balance = IERC1155(token).balanceOf(address(this), id);
-        console.log("balance", balance);
-        console.log(value, MAX_ERC1155_BALANCE);
+        // console.log("balance", balance);
+        // console.log(value, MAX_ERC1155_BALANCE);
         require(
             balance <= MAX_ERC1155_BALANCE,
             "ERC1155 balance would exceed 10 tokens limit"

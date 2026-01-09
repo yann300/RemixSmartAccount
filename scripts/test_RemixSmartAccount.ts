@@ -1,9 +1,12 @@
 "use strict";
 
-import { expect } from "chai";
+import chai from "chai";
+import { waffleChai } from "@ethereum-waffle/chai";
+chai.use(waffleChai)
+const { expect } = chai
 import { Contract, Signer, BrowserProvider, ContractFactory, parseUnits } from "ethers";
 
-const getArtifact = async (contractName: string, signer: number) => {
+const getArtifact = async (contractName: string, signer: any) => {
     const metadata = JSON.parse(await remix.call('fileManager', 'getFile', `./artifacts/${contractName}.json`))
     return new ContractFactory(metadata.abi, metadata.data.bytecode.object, signer)
 }
@@ -14,8 +17,8 @@ const getSigners = async () => {
 }
 
 describe("RemixSmartAccount", function () {
-    let RemixSmartAccount: Contract;
-    let MockERC1155: Contract;
+    let RemixSmartAccount: any;
+    let MockERC1155: any;
     let owner: Signer;
     let addr1: Signer;
     let addr2: Signer;
@@ -47,12 +50,9 @@ describe("RemixSmartAccount", function () {
             // Mint some MockERC1155 to addr1
             await MockERC1155.connect(owner).mint(await addr1.getAddress(), 0, parseUnits("1000", 6), '0x');
             
-            console.log(parseUnits("9", 0))
             const balanceBefore = await MockERC1155.balanceOf(await RemixSmartAccount.getAddress(), 0)
-            console.log(balanceBefore)
             // Try to send USDC to RemixSmartAccount
             await MockERC1155.connect(addr1).safeTransferFrom(await addr1.getAddress(), await RemixSmartAccount.getAddress(), 0, parseUnits("7", 0), '0x');
-            console.log('test')
             // Check if RemixSmartAccount received USDC
             const balance = await MockERC1155.balanceOf(await RemixSmartAccount.getAddress(), 0);
             expect(balance).to.equal(parseUnits("7", 0));
@@ -62,9 +62,10 @@ describe("RemixSmartAccount", function () {
     describe("Balance Limit", function () {
         it("Should not exceed the USDC balance limit", async function () {
             // Try to send more USDC (exceeding limit)
-            await expect(
+            // @ts-ignore
+            (await expect(
                 MockERC1155.connect(addr1).safeTransferFrom(await addr1.getAddress(), await RemixSmartAccount.getAddress(), 0, parseUnits("4", 0), '0x')
-            ).to.be.revertedWith("ERC1155 balance would exceed 10 tokens limit");
+            ).to.be as any).revertedWith("ERC1155 balance would exceed 10 tokens limit");
         });
     });
     /*
